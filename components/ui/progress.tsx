@@ -1,0 +1,32 @@
+import * as React from 'react'
+import { cn } from '@/lib/utils'
+
+export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+  value: number
+  max?: number
+}
+
+function Progress({ className, value, max = 100, ...props }: ProgressProps) {
+  const percentage = Math.min(100, Math.max(0, (value / max) * 100))
+
+  return (
+    <div
+      role="progressbar"
+      aria-valuenow={value}
+      aria-valuemin={0}
+      aria-valuemax={max}
+      className={cn(
+        'relative h-1.5 w-full overflow-hidden rounded-full bg-surface-elevated',
+        className
+      )}
+      {...props}
+    >
+      <div
+        className="h-full rounded-full bg-accent transition-all duration-500 ease-out"
+        style={{ width: `${percentage}%` }}
+      />
+    </div>
+  )
+}
+
+export { Progress }

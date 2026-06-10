@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark mode is default/only mode */
+    --background: 9 9 11;          /* zinc-950 */
+    --foreground: 250 250 250;     /* zinc-50 */
+    --surface: 24 24 27;           /* zinc-900 */
+    --surface-elevated: 39 39 42;  /* zinc-800 */
+    --border: 63 63 70;            /* zinc-700 */
+    --border-subtle: 82 82 91;     /* zinc-600 */
+    --muted: 161 161 170;          /* zinc-400 — used for icon colors */
+    --muted-foreground: 113 113 122; /* zinc-500 */
+    --accent: 239 68 68;           /* fallback, overridden below */
+    --accent: 99 102 241;          /* indigo-500 */
+    --accent-foreground: 255 255 255;
+    --accent-muted: 99 102 241;
+    --destructive: 239 68 68;
+    --success: 34 197 94;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--surface-elevated));
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--border));
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: hsl(var(--accent) / 0.3);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent via-violet-400 to-accent bg-clip-text text-transparent;
+  }
+
+  .glass {
+    background: hsl(var(--surface) / 0.8);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Anchor offset for sticky header */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
