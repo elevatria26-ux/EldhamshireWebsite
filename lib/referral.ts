@@ -11,7 +11,7 @@ export function isValidReferralCode(code: string): boolean {
 }
 
 export function buildShareUrl(referralCode: string): string {
-  const base = process.env.NEXT_PUBLIC_APP_URL ?? 'https://realu.app'
+  const base = process.env.NEXT_PUBLIC_APP_URL ?? 'https://eldhamshire.com'
   return `${base}/invite/${referralCode}`
 }
 

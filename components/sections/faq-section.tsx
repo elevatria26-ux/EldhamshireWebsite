@@ -140,7 +140,7 @@ export function FaqSection() {
         >
           Still have questions?{' '}
           <a
-            href="mailto:hello@realu.app"
+            href="mailto:elevatria26@gmail.com"
             className="text-accent hover:text-accent/80 underline underline-offset-4 transition-colors"
           >
             Email us directly

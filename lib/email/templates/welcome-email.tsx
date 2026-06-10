@@ -112,7 +112,7 @@ export function WelcomeEmail({
             </Text>
             <Text style={footerText}>
               <Link href={`${process.env.NEXT_PUBLIC_APP_URL}`} style={footerLink}>
-                realu.app
+                eldhamshire.com
               </Link>{' '}
               · Built with purpose, for people who are ready.
             </Text>
@@ -127,7 +127,7 @@ WelcomeEmail.PreviewProps = {
   name: 'Alex',
   referralCode: 'ABC12345',
   waitlistPosition: 247,
-  shareUrl: 'https://realu.app/invite/ABC12345',
+  shareUrl: 'https://eldhamshire.com/invite/ABC12345',
 } satisfies WelcomeEmailProps
 
 export default WelcomeEmail

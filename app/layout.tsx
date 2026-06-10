@@ -11,7 +11,7 @@ const inter = Inter({
   display: 'swap',
 })
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://realu.app'
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://eldhamshire.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),

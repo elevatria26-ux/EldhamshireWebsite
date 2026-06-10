@@ -15,7 +15,7 @@ export function SiteFooter() {
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a
-              href="mailto:hello@realu.app"
+              href="mailto:elevatria26@gmail.com"
               className="hover:text-foreground transition-colors"
             >
               Contact

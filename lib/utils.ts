@@ -11,7 +11,7 @@ export function formatPosition(position: number): string {
 }
 
 export function generateShareUrl(referralCode: string): string {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://realu.app'
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://eldhamshire.com'
   return `${baseUrl}/invite/${referralCode}`
 }
 
