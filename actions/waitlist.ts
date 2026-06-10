@@ -1,12 +1,9 @@
 'use server'
 
 import { createServiceClient } from '@/lib/supabase/server'
-import { resend, FROM_EMAIL, REPLY_TO } from '@/lib/email'
-import { WelcomeEmail } from '@/lib/email/templates/welcome-email'
 import { fullWaitlistSchema } from '@/lib/validations'
-import { generateReferralCode, buildShareUrl } from '@/lib/referral'
+import { generateReferralCode } from '@/lib/referral'
 import type { ActionResult, WaitlistSuccessData } from '@/types'
-import { render } from '@react-email/components'
 
 export async function submitWaitlist(
   formData: unknown,
@@ -106,30 +103,6 @@ export async function submitWaitlist(
     await supabase.rpc('increment_referral_count', {
       referral_code_param: validReferredBy,
     })
-  }
-
-  // Send welcome email (non-blocking — don't fail signup if email fails)
-  try {
-    const shareUrl = buildShareUrl(referralCode)
-    const emailHtml = await render(
-      WelcomeEmail({
-        name: data.name,
-        referralCode,
-        waitlistPosition,
-        shareUrl,
-      })
-    )
-
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: data.email,
-      replyTo: REPLY_TO,
-      subject: "You're officially on the RealU waitlist",
-      html: emailHtml,
-    })
-  } catch (emailError) {
-    console.error('Email send error:', emailError)
-    // Continue — don't fail the signup
   }
 
   return {
